@@ -1,5 +1,4 @@
 
-
 public class Data {
 
 	private int dia;
@@ -12,26 +11,16 @@ public class Data {
 		
 	}
 	
-	public Data ( int dia, int mes, int ano) {
-	
-		if (dia >=29 && mes == 2 && ano % 4 != 0 || dia > 31) {
-			System.out.println("Data inválida, alterando data para 1/1/2000");
-			this.dia = 1;
-			this.mes = 1;
-			this.ano = 2000;	
-		}
-		else if (mes == 4 || mes == 6 || mes ==9 || mes == 11 && dia > 30) {
-			System.out.println("Data inválida, alterando data para 1/1/2000");
+	public Data(int dia, int mes, int ano){
+		this.dia = dia;
+		this.mes = mes;
+		this.ano = ano;
+		
+		if(!validaData()){
 			this.dia = 1;
 			this.mes = 1;
 			this.ano = 2000;
 		}
-		else {
-			this.dia = dia;
-			this.mes = mes;
-			this.ano = ano;
-		}
-		
 	}
 	
 	// métodos de acesso get e set:
@@ -68,8 +57,34 @@ public class Data {
 	
 	// outros métodos:
 	
-	public boolean verificaAnoBissexto() {
-		return (ano % 4 == 0);
+	public boolean verificaAnoBissexto(){
+		return (ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0;
 	}
+	
+	private boolean validaData(){
+		if (ano < 1){
+			return false;
+			
+		} else if (mes < 1 || mes > 12) {
+		  return false;
+		  
+		} else if (mes == 2) { // fevereiro
+		  if (verificaAnoBissexto()) { // ano bissexto
+			if(dia < 1 || dia > 29) return false;
+		
+		  } else {
+			if (dia < 1 || dia > 28) return false;			
+		  }
+		  
+		} else if (mes == 4 || mes == 6 || mes == 9 || mes == 11) { // meses com 30 dias
+		  if (dia < 1 || dia > 30) return false;
+		  
+		} else { // meses com 31 dias
+		  if (dia < 1 || dia > 31) return false;
+		}
+
+		return true;
+	}
+	
 	
 }

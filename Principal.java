@@ -1,4 +1,3 @@
-
 import java.util.Scanner;
 import java.util.Locale;
 
@@ -45,87 +44,82 @@ public class Principal {
 		scString.close();
 	}
 
-	public static void criarLoja(){
-
-	Loja loja = new Loja();
+	public static void criarLoja() {
+		
 	Scanner sc = new Scanner(System.in);
 	Scanner scString = new Scanner(System.in);
-		
-
-	System.out.println("Digite o nome da loja: ");
-	loja.setNome(scString.nextLine());
+	
+	System.out.println("Digite o nome da loja: ");	
+	String nome = scString.nextLine();
 	System.out.println("Digite a quantidade de funcionários: ");
-	loja.setQuantidadeFuncionarios(sc.nextInt());
+	int quantidadeFuncionarios = sc.nextInt();
 	System.out.println("Digite o salário base do(s) funcionário(s): ");
-	loja.setSalarioBaseFuncionario(sc.nextDouble());
-
-
-	Endereco endereco = new Endereco();
-
+	double salarioBaseFuncionario = sc.nextDouble();
+	
 	System.out.println("Digite o nome da rua da loja: ");
-	endereco.setNomeDaRua(scString.nextLine());
+	String nomeDaRua = scString.nextLine();
 	System.out.println("Digite o número: ");
-	endereco.setNumero(scString.nextLine());
+	String numero = scString.nextLine();
 	System.out.println("Digite o complemento: ");
-	endereco.setComplemento(scString.nextLine());
+	String complemento = scString.nextLine();
 	System.out.println("Digite o CEP: ");
-	endereco.setCep(scString.nextLine());
+	String cep = scString.nextLine();
 	System.out.println("Digite a cidade: ");
-	endereco.setCidade(scString.nextLine());
+	String cidade = scString.nextLine();
 	System.out.println("Digite o estado: ");
-	endereco.setEstado(scString.nextLine());
+	String estado = scString.nextLine();
 	System.out.println("Digite o país: ");
-	endereco.setPais(scString.nextLine());
-
-	Data data = new Data();
-
+	String pais = scString.nextLine();
+	
 	System.out.println("Digite o dia de fundação da loja:");
-	data.setDia(sc.nextInt());
+	int dia = sc.nextInt();
 	System.out.println("Digite o mês de fundação da loja:");
-	data.setMes(sc.nextInt());
+	int mes = sc.nextInt();
 	System.out.println("Digite o ano de fundação da loja:");
-	data.setAno(sc.nextInt());
-
-	loja.setEndereco(endereco);
-	loja.setDataFundacao(data);
-
+	int ano = sc.nextInt();
+	
+	Data dataFundacao = new Data(dia,mes,ano);
+	Endereco endereco = new Endereco(nomeDaRua, cidade, estado, pais, cep, numero, complemento);
+	Loja loja = new Loja(nome,quantidadeFuncionarios,salarioBaseFuncionario, endereco, dataFundacao);
+	
 	System.out.println(loja.toString());
-
+	
 	sc.close();
-	scString.close();
-	}
+	scString.close();	
+	}	
 	
 	public static void criarProduto(){
-	Produto produto = new Produto();
-
+	
 	Scanner sc = new Scanner(System.in);
 	Scanner scString = new Scanner(System.in);
-
+	
 	System.out.println("Digite o nome do produto: ");
-	produto.setNome(scString.nextLine());
+	String nome = scString.nextLine();
 	System.out.println("Digite o preço do produto:");
-	produto.setPreco(sc.nextDouble());
-
-	Data data = new Data();
-			
+	double preco = sc.nextDouble();
+	
 	System.out.println("Digite a data de validade do produto: ");
 	System.out.println("dia:");
-	data.setDia(sc.nextInt());
+	int dia = sc.nextInt();
 	System.out.println("mês:");
-	data.setMes(sc.nextInt());
+	int mes = sc.nextInt();
 	System.out.println("ano:");
-	data.setAno(sc.nextInt());
-			
-	produto.setDataValidade(data);
+	int ano = sc.nextInt();
+	
+	Data dataValidade = new Data(dia, mes, ano);
+	Produto produto = new Produto (nome, preco, dataValidade);
+	
+	Data data = new Data(20, 10, 2023);
+	
+	if (produto.estaVencido(data)){
+		System.out.println("O PRODUTO ESTÁ VENCIDO");
+		}
+		else{
+		System.out.println("PRODUTO NÃO VENCIDO");
+		}
+	
+	System.out.println(produto.toString());
 
-	Data dataReferencia = new Data(20, 10, 2023);
-
-	if (produto.estaVencido(dataReferencia) == true){
-	System.out.println("O PRODUTO ESTÁ VENCIDO");
-	}
-	else{
-	System.out.println("PRODUTO NÃO VENCIDO");
-	}
 
 	sc.close();
 	scString.close();

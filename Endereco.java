@@ -1,4 +1,3 @@
-
 public class Endereco {
 	
 	private String nomeDaRua;

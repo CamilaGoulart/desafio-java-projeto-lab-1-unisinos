@@ -10,8 +10,7 @@ public class Loja {
 	//método construtor:
 	
 	public Loja () {
-		this.endereco = new Endereco();
-		this.dataFundacao = new Data();
+		
 	}
 	
 	public Loja (String nome, int quantidadeFuncionarios, 
@@ -26,7 +25,6 @@ public class Loja {
 	public Loja (String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao ) {
 		this.nome = nome;
 		this.quantidadeFuncionarios = quantidadeFuncionarios;
-		this.salarioBaseFuncionario = -1;
 		this.endereco = endereco;
 		this.dataFundacao = dataFundacao;
 	}
@@ -35,6 +33,12 @@ public class Loja {
 		this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
         
+	}
+	
+	public Loja (String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
+		this.nome = nome;
+        this.quantidadeFuncionarios = quantidadeFuncionarios;
+        this.salarioBaseFuncionario = -1;
 	}
 	
 	// métodos de acesso get e set:
@@ -83,10 +87,10 @@ public class Loja {
 	@Override
 	public String toString() {
 		return "Nome da Loja: " +nome
-				+ "\n Quantidade de Funcionários: " + quantidadeFuncionarios 
-				+ "\n Salário Base do Funcionário: " + String.format("%.2f",salarioBaseFuncionario)
-				+ "\n Endereço da Loja: " + endereco
-				+ "\n Data da Fundação da Loja: " + dataFundacao;
+				+ "\nQuantidade de Funcionários: " + quantidadeFuncionarios 
+				+ "\nSalário Base do Funcionário: " + String.format("%.2f",salarioBaseFuncionario)
+				+ "\nEndereço da Loja: " + endereco
+				+ "\nData da Fundação da Loja: " + dataFundacao;
 
 	}
 	

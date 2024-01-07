@@ -8,9 +8,9 @@ public class Produto {
 	//método construtor:
 	
 	public Produto() {
-		this.dataValidade = new Data();
+		
 	}
-
+	
 	public Produto(String nome, double preco, Data dataValidade) {
 		this.nome = nome;
 		this.preco = preco;
@@ -42,41 +42,25 @@ public class Produto {
 	public void setDataValidade(Data dataValidade) {
 		this.dataValidade = dataValidade;
 	}
-// meu código anterior:
-/* public boolean estaVencido(Data data) {
-		if (dataValidade.getAno() > data.getAno()) {
-			return true;
-		}
-		else if (data.getAno() == dataValidade.getAno() 
-				&&  dataValidade.getMes() > data.getMes()) {
+	
+	public boolean estaVencido(Data data) {
+		if(data.getAno() > dataValidade.getAno()){
             return true;
 		}
-		else if (data.getAno() == dataValidade.getAno() 
-				&& data.getMes() == dataValidade.getMes() 
-				&& dataValidade.getDia() >  data.getDia()) {
+		else if(data.getAno() < dataValidade.getAno()){
+            return false;
+		}
+		else if(data.getMes() > dataValidade.getMes()){
+            return true;
+		}
+		else if(data.getMes() < dataValidade.getMes()){
+            return false;
+		}
+		else if(data.getDia() > dataValidade.getDia()){
             return true;
 		}
 		else {
 			return false;
-		} */
-		
-	public boolean estaVencido(Data data) {
-		if (dataValidade.getAno() > data.getAno()) {
-			return true;
-		}
-		else if (data.getAno() < dataValidade.getAno()) {
-			return false;
-		}
-		else{
-			if (dataValidade.getMes() > data.getMes()){
-				return true;
-			}
-			else if (dataValidade.getMes() < data.getMes()){
-				return false;
-		}
-			else{
-				return dataValidade.getDia() > data.getDia();
-			}
 		}
 	
 	}
@@ -84,7 +68,8 @@ public class Produto {
 	@Override
 	public String toString() {
 		return "Nome do Produto: " +nome
-				+ "\n Valor do Produto: R$ " +preco;
+				+ "\nValor do Produto: R$ " +String.format("%.2f", preco)
+				+ "\nData de validade: " + dataValidade;
 	}
 	
 	
