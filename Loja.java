@@ -6,27 +6,26 @@ public class Loja {
 	private double salarioBaseFuncionario;
 	private Endereco endereco;
 	private Data dataFundacao;
+	private Produto[] estoqueProdutos;
 	
-	//método construtor:
-	
-	public Loja () {
-		
-	}
-	
+	//método construtor - sobrecarga
 	public Loja (String nome, int quantidadeFuncionarios, 
-			double salarioBaseFuncionario, Endereco endereco, Data dataFundacao ) {
+			double salarioBaseFuncionario, Endereco endereco, Data dataFundacao, int quantidadeMaximaProdutos ) {
 		this.nome = nome;
 		this.quantidadeFuncionarios = quantidadeFuncionarios;
-		this.salarioBaseFuncionario = -1;
+		this.salarioBaseFuncionario = salarioBaseFuncionario;
 		this.endereco = endereco;
 		this.dataFundacao = dataFundacao;
+		this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
 	}
 	
-	public Loja (String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao ) {
+	public Loja (String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao, int quantidadeMaximaProdutos ) {
 		this.nome = nome;
 		this.quantidadeFuncionarios = quantidadeFuncionarios;
+		this.salarioBaseFuncionario = - 1;
 		this.endereco = endereco;
 		this.dataFundacao = dataFundacao;
+		this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
 	}
 	
 	public Loja (String nome, int quantidadeFuncionarios) {
@@ -41,8 +40,21 @@ public class Loja {
         this.salarioBaseFuncionario = -1;
 	}
 	
-	// métodos de acesso get e set:
+	public Loja(int quantidadeMaximaProdutos) {
+        this.estoqueProdutos = new Produto[quantidadeMaximaProdutos];
+    }
 	
+	public Loja (String nome, int quantidadeFuncionarios, 
+			double salarioBaseFuncionario, Endereco endereco, Data dataFundacao ) {
+		this.nome = nome;
+		this.quantidadeFuncionarios = quantidadeFuncionarios;
+		this.salarioBaseFuncionario = salarioBaseFuncionario;
+		this.endereco = endereco;
+		this.dataFundacao = dataFundacao;
+		
+	}
+	
+	// métodos de acesso get e set:
 	public String getNome() {
 		return nome;
 	}
@@ -82,6 +94,11 @@ public class Loja {
 	public void setDataFundacao(Data dataFundacao) {
 		this.dataFundacao = dataFundacao;
 	}
+	
+	public Produto[] getEstoqueProdutos() {
+        return estoqueProdutos;
+	}
+	
 
 	// método toString:
 	@Override
@@ -89,8 +106,8 @@ public class Loja {
 		return "Nome da Loja: " +nome
 				+ "\nQuantidade de Funcionários: " + quantidadeFuncionarios 
 				+ "\nSalário Base do Funcionário: " + String.format("%.2f",salarioBaseFuncionario)
-				+ "\nEndereço da Loja: " + endereco
-				+ "\nData da Fundação da Loja: " + dataFundacao;
+				+ "\n" + endereco
+				+ "\nData da Fundação da Loja: " + dataFundacao + "\nEstoque de Produtos: " + estoqueProdutos;
 
 	}
 	
@@ -117,4 +134,34 @@ public class Loja {
 		}
 	}
 	
+	public void imprimeProdutos() {
+        System.out.println("Produtos da loja:");
+        for (Produto produto : estoqueProdutos) { //for each
+            if (produto != null) {
+                System.out.println(produto);
+            }
+        }
+    }
+	
+    public boolean insereProduto(Produto produto) {
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+            if (estoqueProdutos[i] == null) {
+                estoqueProdutos[i] = produto;
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean removeProduto(String nomeProduto) {
+        for (int i = 0; i < estoqueProdutos.length; i++) {
+            Produto produto = estoqueProdutos[i];
+            if (produto != null && produto.getNome().equals(nomeProduto)) {
+                estoqueProdutos[i] = null;
+                return true;
+            }
+        }
+        return false;
+    }
 }
+

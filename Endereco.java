@@ -8,12 +8,7 @@ public class Endereco {
 	private String numero;
 	private String complemento;
 	
-	//método construtor:
-	
-	public Endereco() {
-		
-	}
-	
+	//método construtor
 	public Endereco(String nomeDaRua, String cidade, String estado, 
 			String pais, String cep, String numero, String complemento) {
 		
@@ -28,7 +23,6 @@ public class Endereco {
 	}
 	
 	//metodos de acesso get e set:
-	
 	public String getNomeDaRua() {
 		return nomeDaRua;
 	}

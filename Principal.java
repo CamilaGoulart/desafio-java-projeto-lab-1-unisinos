@@ -78,6 +78,7 @@ public class Principal {
 	System.out.println("Digite o ano de fundação da loja:");
 	int ano = sc.nextInt();
 	
+	
 	Data dataFundacao = new Data(dia,mes,ano);
 	Endereco endereco = new Endereco(nomeDaRua, cidade, estado, pais, cep, numero, complemento);
 	Loja loja = new Loja(nome,quantidadeFuncionarios,salarioBaseFuncionario, endereco, dataFundacao);
@@ -98,18 +99,11 @@ public class Principal {
 	System.out.println("Digite o preço do produto:");
 	double preco = sc.nextDouble();
 	
-	System.out.println("Digite a data de validade do produto: ");
-	System.out.println("dia:");
-	int dia = sc.nextInt();
-	System.out.println("mês:");
-	int mes = sc.nextInt();
-	System.out.println("ano:");
-	int ano = sc.nextInt();
 	
-	Data dataValidade = new Data(dia, mes, ano);
+	Data dataValidade = new Data(20, 10, 2023);
 	Produto produto = new Produto (nome, preco, dataValidade);
 	
-	Data data = new Data(20, 10, 2023);
+	Data data = new Data(21, 10, 2023);
 	
 	if (produto.estaVencido(data)){
 		System.out.println("O PRODUTO ESTÁ VENCIDO");

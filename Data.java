@@ -6,11 +6,6 @@ public class Data {
 	private int ano;
 	
 	// método construtor:
-	
-	public Data() {
-		
-	}
-	
 	public Data(int dia, int mes, int ano){
 		this.dia = dia;
 		this.mes = mes;
@@ -24,7 +19,6 @@ public class Data {
 	}
 	
 	// métodos de acesso get e set:
-	
 	public int getDia() {
 		return dia;
 	}
@@ -61,7 +55,7 @@ public class Data {
 		return (ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0;
 	}
 	
-	private boolean validaData(){
+	public boolean validaData(){
 		if (ano < 1){
 			return false;
 			

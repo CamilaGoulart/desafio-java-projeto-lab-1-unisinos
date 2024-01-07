@@ -6,11 +6,6 @@ public class Produto {
 	private Data dataValidade;
 	
 	//método construtor:
-	
-	public Produto() {
-		
-	}
-	
 	public Produto(String nome, double preco, Data dataValidade) {
 		this.nome = nome;
 		this.preco = preco;
@@ -18,7 +13,6 @@ public class Produto {
 	}
 	
 	//métodos de acesso get e set: 
-	
 	public String getNome() {
 		return nome;
 	}
@@ -42,7 +36,8 @@ public class Produto {
 	public void setDataValidade(Data dataValidade) {
 		this.dataValidade = dataValidade;
 	}
-	
+
+	//outros métodos
 	public boolean estaVencido(Data data) {
 		if(data.getAno() > dataValidade.getAno()){
             return true;
@@ -71,7 +66,5 @@ public class Produto {
 				+ "\nValor do Produto: R$ " +String.format("%.2f", preco)
 				+ "\nData de validade: " + dataValidade;
 	}
-	
-	
 	
 }
