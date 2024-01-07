@@ -1,4 +1,5 @@
 
+
 public class Data {
 
 	private int dia;
@@ -6,6 +7,10 @@ public class Data {
 	private int ano;
 	
 	// método construtor:
+	
+	public Data() {
+		
+	}
 	
 	public Data ( int dia, int mes, int ano) {
 	

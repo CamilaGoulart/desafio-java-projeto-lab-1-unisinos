@@ -4,19 +4,37 @@ public class Loja {
 	private String nome;
 	private int quantidadeFuncionarios;
 	private double salarioBaseFuncionario;
+	private Endereco endereco;
+	private Data dataFundacao;
 	
 	//método construtor:
 	
-	public Loja (String nome, int quantidadeFuncionarios, double salarioBaseFuncionario) {
+	public Loja () {
+		this.endereco = new Endereco();
+		this.dataFundacao = new Data();
+	}
+	
+	public Loja (String nome, int quantidadeFuncionarios, 
+			double salarioBaseFuncionario, Endereco endereco, Data dataFundacao ) {
 		this.nome = nome;
 		this.quantidadeFuncionarios = quantidadeFuncionarios;
-		this.salarioBaseFuncionario = salarioBaseFuncionario;
+		this.salarioBaseFuncionario = -1;
+		this.endereco = endereco;
+		this.dataFundacao = dataFundacao;
+	}
+	
+	public Loja (String nome, int quantidadeFuncionarios, Endereco endereco, Data dataFundacao ) {
+		this.nome = nome;
+		this.quantidadeFuncionarios = quantidadeFuncionarios;
+		this.salarioBaseFuncionario = -1;
+		this.endereco = endereco;
+		this.dataFundacao = dataFundacao;
 	}
 	
 	public Loja (String nome, int quantidadeFuncionarios) {
 		this.nome = nome;
         this.quantidadeFuncionarios = quantidadeFuncionarios;
-        this.salarioBaseFuncionario = -1;
+        
 	}
 	
 	// métodos de acesso get e set:
@@ -45,12 +63,31 @@ public class Loja {
 		this.salarioBaseFuncionario = salarioBaseFuncionario;
 	}
 	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+	public Data getDataFundacao() {
+		return dataFundacao;
+	}
+
+	public void setDataFundacao(Data dataFundacao) {
+		this.dataFundacao = dataFundacao;
+	}
+
 	// método toString:
 	@Override
 	public String toString() {
-		return "Nome do Funcionário: " +nome
-				+ "Quantidade de Funcionários: " + quantidadeFuncionarios
-				+ "Salário Base do Funcionário: " + salarioBaseFuncionario;
+		return "Nome da Loja: " +nome
+				+ "\n Quantidade de Funcionários: " + quantidadeFuncionarios 
+				+ "\n Salário Base do Funcionário: " + String.format("%.2f",salarioBaseFuncionario)
+				+ "\n Endereço da Loja: " + endereco
+				+ "\n Data da Fundação da Loja: " + dataFundacao;
+
 	}
 	
 	// outros métodos:

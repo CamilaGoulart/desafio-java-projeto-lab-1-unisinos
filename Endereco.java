@@ -11,6 +11,10 @@ public class Endereco {
 	
 	//método construtor:
 	
+	public Endereco() {
+		
+	}
+	
 	public Endereco(String nomeDaRua, String cidade, String estado, 
 			String pais, String cep, String numero, String complemento) {
 		
@@ -88,15 +92,6 @@ public class Endereco {
 		return "Endereço completo: " +nomeDaRua +"," +numero +"," +complemento +","
 				+cidade +"," +estado +"," +pais +"," +cep;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 
 }
